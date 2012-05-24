@@ -1,0 +1,91 @@
+@****************************************************
+* Home page.                                        *
+*                                                   *
+* @param  title The title of the page               *
+* @param  content The body content                  *
+* @param  extScript Additional scripts to include   *
+****************************************************@
+@(extensions: Html=Html(""))(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>TSSDOJO</title>
+  @extensions
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dijit/themes/claro/claro.css"
+        media="screen">
+  <script>
+    dojoConfig = {
+      //isDebug:true,
+      parseOnLoad:false,
+      async:true,
+      dojoBlankHtmlUrl:'http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/resources/blank.html',
+      packages:[
+        {
+          name:'pmm',
+          location:location.pathname.replace(/\/[^/]+$/, '') + 'assets/javascripts/pmm'
+        }
+      ]
+    };
+  </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.2/dojo/dojo.js.uncompressed.js"></script>
+  <script>
+    var model;
+    require(["dijit/layout/BorderContainer",
+      "dijit/layout/ContentPane",
+      "dijit/TitlePane",
+      "dijit/form/Button",
+      "dojo/dom",
+      "dojo/parser",
+      "dojo/_base/array",
+      "pmm/tssDGFX",
+      "pmm/tssD",
+      "dojox/mvc",
+      "dojox/mvc/Group",
+      "dojox/mvc/Output",
+      "dijit/form/Button",
+      "dijit/form/TextBox",
+      "dojo/ready",
+      "dojo/domReady!"],
+        function (bc, cp, tp, btt, dom, p, arr, tdg, td, mvc, group, output, button, tb, ready) {
+
+          ready(function () {
+
+            model = dojox.mvc.newStatefulModel({ data:{
+              "First":"John",
+              "Last":"Doe",
+              "Email":"jdoe@@example.com"
+            }});
+
+
+            p.parse();
+            td.initHandlers();
+            tdg.initSurfaces("overview", "innerDetail");
+            tdg.initRooms();
+            tdg.initAnimations();
+            tdg.drawRooms();
+
+            arr.forEach([
+              {x:0, y:0, health:"healthy"},
+              {x:1, y:0, health:"healthy"},
+              {x:2, y:0, health:"healthy"},
+              {x:0, y:1, health:"healthy"},
+              {x:1, y:1, health:"healthy"},
+              {x:2, y:1, health:"warning"},
+              {x:0, y:2, health:"severe"},
+              {x:1, y:2, health:"healthy"},
+              {x:2, y:2, health:"healthy"}
+            ], function (item, index) {
+                  tdg.animateRoomStatus(item);
+                }
+            );
+
+          });
+        });
+  </script>
+</head>
+<body class="claro">
+@content
+</body>
+</html>

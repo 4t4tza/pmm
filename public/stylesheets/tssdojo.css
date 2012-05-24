@@ -1,0 +1,42 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+.wrapper {
+  height: 100%;
+  width:100%;
+  background-color: #ddd;
+  margin:0;
+  padding: 0;
+}
+
+#ribbon {
+  background-color: #abaecc;
+  height: 10%;
+}
+
+.workPane {
+  background-color: #7474d4;
+  height: 90%;
+  padding:0
+}
+
+.overview {
+  float:left;
+  height: 100%;
+  width:48%;
+  margin: 0;
+  background-color: #eee;
+  overflow: hidden;
+}
+
+.detail {
+  height: 100%;
+  width:48%;
+  margin: 0;
+  background-color: #eee;
+  overflow: hidden;
+}

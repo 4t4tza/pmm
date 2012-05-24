@@ -1,0 +1,18 @@
+@(monitorConnection: String)
+
+@import tags._
+
+@extensions = {
+  <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+  <link rel="stylesheet" href="@routes.Assets.at("stylesheets/tssdojo.css")" media="screen">
+}
+
+@main {
+  @extensions
+} {
+  @if(monitorConnection.equals("comet")) {
+    @layoutComet()
+  } else {
+    @layoutXhr()
+  }
+}

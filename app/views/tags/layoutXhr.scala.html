@@ -1,0 +1,64 @@
+<div class="wrapper" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design: 'headline'">
+  <header id="ribbon"
+       data-dojo-type="dijit.layout.ContentPane"
+       data-dojo-props="region: 'top'">
+    <h1>Welcome to xhr-monitor@@0.0.1</h1>
+  </header>
+  <div id="overviewPane" class="overview" data-dojo-type="dijit.layout.ContentPane" data-dojo-props="region: 'left'"
+       style="width:50%">
+    <div id="overview"></div>
+  </div>
+  <div class="detail"
+       data-dojo-type="dijit.layout.ContentPane"
+       data-dojo-props="region: 'center'">
+
+    <div id="detailedView" data-dojo-type="dijit.TitlePane" data-dojo-props="title: 'Detailed View'">
+      <div id="innerDetail"></div>
+
+
+    </div>
+  </div>
+  <div class="footer"
+       data-dojo-type="dijit.layout.ContentPane"
+       data-dojo-props="region: 'bottom'">
+    <div id="main">
+      <div class="row">
+        <label class="cell" for="firstnameInput">First:</label>
+        <input class="cell" id="firstnameInput" data-dojo-type="dijit.form.TextBox"
+               data-dojo-props="ref: model.First">
+        <!-- Content in output below will always be in sync with value of textbox above -->
+        <span data-dojo-type="dojox.mvc.Output" data-dojo-props="ref: model.First">
+            (first name is: ${this.value})
+        </span>
+      </div>
+      <div class="row">
+        <label class="cell" for="lastnameInput">Last:</label>
+        <input class="cell" id="lastnameInput" data-dojo-type="dijit.form.TextBox"
+               data-dojo-props="ref: model.Last"/>
+        <span data-dojo-type="dojox.mvc.Output" data-dojo-props="ref: model.Last">
+            (last name is: ${this.value})
+        </span>
+      </div>
+      <div class="row">
+        <label class="cell" for="emailInput">Email:</label>
+        <input class="cell" id="emailInput" data-dojo-type="dijit.form.TextBox"
+               data-dojo-props="ref: model.Email"/>
+        <span data-dojo-type="dojox.mvc.Output" data-dojo-props="ref: model.Email">
+            (email is: ${this.value})
+        </span>
+      </div>
+      <br/>
+      Model:
+      <button id="reset" type="button" data-dojo-type="dijit.form.Button" data-dojo-props="onClick: function(){model.reset();}">Reset</button>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    require(["pmm/tssD", "dojo/domReady!"], function (tssd) {
+      setInterval(function () {
+        for (i = 0; i < 9; i++)
+          tssd.fetchRoom(i);
+      }, 10000);
+    });
+  </script>
+</div>

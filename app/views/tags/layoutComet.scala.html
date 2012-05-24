@@ -1,0 +1,36 @@
+<div class="wrapper" data-dojo-type="dijit.layout.BorderContainer" data-dojo-props="design: 'headline'">
+  <div id="ribbon"
+       data-dojo-type="dijit.layout.ContentPane"
+       data-dojo-props="region: 'top'">
+    <h1>Welcome to comet-monitor@@0.0.1</h1>
+  </div>
+  <div class="workPane"
+       data-dojo-type="dijit.layout.ContentPane"
+       data-dojo-props="region: 'center'">
+    <div id="centerWrapper" style="width: 100%; padding: 0; margin: 0; height: 100%">
+      <div id="overview" class="overview" data-dojo-type="dijit.layout.ContentPane">
+        overview
+      </div>
+      <div id="detail" class="detail" data-dojo-type="dijit.layout.ContentPane">
+        <div id="detailedView" data-dojo-type="dijit.TitlePane" data-dojo-props="title: 'Detailed View'">
+          inn
+          <div id="innerDetail"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom"
+       data-dojo-type="dijit.layout.ContentPane"
+       data-dojo-props="region: 'bottom'">
+    <div>
+      <script type="text/javascript" charset="utf-8">
+        // Called for each Comet message
+        var cometRooms = function (room) {
+          console.log(room);
+        };
+      </script>
+
+      <iframe id="comet" src="@routes.Rooms.cometRooms.unique"></iframe>
+    </div>
+  </div>
+</div>
